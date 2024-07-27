@@ -10,11 +10,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevFramework.Northwind.Business.Concrete.Managers;
 using DevFramework.Northwind.DataAccsess.Abstract;
 using DevFramework.Northwind.DataAccsess.Concrete.EntityFramework;
 using DevFramework.Northwind.DataAccsess.Concrete.NHibernate.Helppers;
 
-namespace DevFramework.Northwind.Business.DependencyResolvers
+namespace DevFramework.Northwind.Business.DependencyResolvers.Ninject
 {
     public class BusinessModule:NinjectModule
     {

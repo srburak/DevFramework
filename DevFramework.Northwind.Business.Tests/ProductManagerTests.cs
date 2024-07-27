@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using DevFramework.Northwind.Business.Concrete;
+using DevFramework.Northwind.Business.Concrete.Managers;
 using DevFramework.Northwind.DataAccsess.Abstract;
 using DevFramework.Northwind.Entities.Concrete;
 using FluentValidation;

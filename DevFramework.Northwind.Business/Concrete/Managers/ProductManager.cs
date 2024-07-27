@@ -5,16 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DevFramework.Core.CrossCuttingConcerns.Caching.Microsoft;
-using DevFramework.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
+using DevFramework.Core.Aspects.Postsharp;
 using DevFramework.Core.Aspects.Postsharp.CacheAspects;
 using DevFramework.Core.Aspects.Postsharp.TransactionAspects;
 using DevFramework.Core.Aspects.Postsharp.ValidationAspects;
+using DevFramework.Core.CrossCuttingConcerns.Caching.Microsoft;
+using DevFramework.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using DevFramework.Northwind.Business.ValidationRules;
+using DevFramework.Northwind.Business.ValidationRules.FluentValidation;
 using DevFramework.Northwind.DataAccsess.Abstract;
 using DevFramework.Northwind.Entities.Concrete;
 
-namespace DevFramework.Northwind.Business.Concrete
+namespace DevFramework.Northwind.Business.Concrete.Managers
 {
     public class ProductManager : IProductService
     {
@@ -40,6 +42,7 @@ namespace DevFramework.Northwind.Business.Concrete
 
         [FluentValidationAspect(typeof(ProductValidatior))]
         [CacheAspect(typeof(MemoryCacheManager))]
+        [LogAspect(typeof(FileLogger))]
         public Product Add(Product product)
         {
             return _productDal.Add(product);

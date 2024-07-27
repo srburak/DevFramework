@@ -81,6 +81,7 @@
     <Compile Include="Concrete\EntityFramework\NorthwindContext.cs" />
     <Compile Include="Concrete\NHibernate\Helppers\SqlServerHelper.cs" />
     <Compile Include="Concrete\NHibernate\Mappings\CategoryMap.cs" />
+    <Compile Include="Concrete\NHibernate\Mappings\ProductMap.cs" />
     <Compile Include="Concrete\NHibernate\NhCategoryDal.cs" />
     <Compile Include="Concrete\NHibernate\NhProductDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

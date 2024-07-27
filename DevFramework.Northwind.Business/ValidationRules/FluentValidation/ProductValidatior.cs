@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DevFramework.Northwind.Entities.Concrete;
 
-namespace DevFramework.Northwind.Business.ValidationRules
+namespace DevFramework.Northwind.Business.ValidationRules.FluentValidation
 {
     public class ProductValidatior: AbstractValidator<Product>
     {
