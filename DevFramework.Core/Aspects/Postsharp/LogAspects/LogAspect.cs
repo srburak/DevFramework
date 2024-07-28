@@ -55,8 +55,9 @@ namespace DevFramework.Core.Aspects.Postsharp.LogAspects
                 };
                 _loggerService.Info(logDetail);
             }
-            catch
+            catch (Exception)
             {
+                // ignored
             }
         }
     }

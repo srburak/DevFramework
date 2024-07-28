@@ -35,8 +35,10 @@ namespace DevFramework.Core.Aspects.Postsharp.CacheAspects
 
         public override void OnInvoke(MethodInterceptionArgs args)
         {
-            var methodName = string.Format("{0},{1},{2}", args.Method.ReflectedType.Namespace, args.
-                Method.ReflectedType.Name, args.Method.Name);
+            var methodName = string.Format("{0},{1},{2}", 
+                args.Method.ReflectedType.Namespace,
+                args.Method.ReflectedType.Name, 
+                args.Method.Name);
             var arguments = args.Arguments.ToList();
             var key = string.Format("{0},({1})", methodName,
                 string.Join(",", arguments.Select(x => x != null ? x.ToString() : "<Null>")));
@@ -44,11 +46,9 @@ namespace DevFramework.Core.Aspects.Postsharp.CacheAspects
             if (_cacheManager.IsAdd(key))
             {
                 args.ReturnValue = _cacheManager.Get<object>(key);
-                return;
             }
 
             base.OnInvoke(args);
-
             _cacheManager.Add(key, args.ReturnValue, _cacheByMinute);
         }
     }

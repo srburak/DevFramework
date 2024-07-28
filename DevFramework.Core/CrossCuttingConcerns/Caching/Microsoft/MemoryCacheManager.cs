@@ -11,6 +11,7 @@ namespace DevFramework.Core.CrossCuttingConcerns.Caching.Microsoft
     public class MemoryCacheManager : ICacheManager
     {
         protected ObjectCache Cache => MemoryCache.Default;
+
         public T Get<T>(string key)
         {
             return (T)Cache[key];
@@ -19,13 +20,11 @@ namespace DevFramework.Core.CrossCuttingConcerns.Caching.Microsoft
         public void Add(string key, object data, int cacheTime = 60)
         {
             if (data == null)
-                return;
-
-            var policy = new CacheItemPolicy
             {
-                AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(cacheTime)
-            };
+                return;
+            }
 
+            var policy = new CacheItemPolicy { AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(cacheTime) };
             Cache.Add(new CacheItem(key, data), policy);
         }
 
