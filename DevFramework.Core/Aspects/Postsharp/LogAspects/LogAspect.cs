@@ -4,6 +4,7 @@ using PostSharp.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using DevFramework.Core.CrossCuttingConcerns.Logging;
@@ -12,7 +13,8 @@ using DevFramework.Core.CrossCuttingConcerns.Logging.Log4Net;
 namespace DevFramework.Core.Aspects.Postsharp.LogAspects
 {
     [PSerializable]
-    [MulticastAttributeUsage(MulticastTargets.Method, TargetMemberAttributes = MulticastAttributes.Instance)] // This aspect can be used only on methods of classes.
+    [MulticastAttributeUsage(MulticastTargets.Method, 
+        TargetMemberAttributes = MulticastAttributes.Instance)] // This aspect can be used only on methods of classes.
     public class LogAspect : OnMethodBoundaryAspect
     {
         private Type _loggerType;
@@ -23,13 +25,16 @@ namespace DevFramework.Core.Aspects.Postsharp.LogAspects
             _loggerType = loggerType;
         }
 
-        public override void RuntimeInitialize(System.Reflection.MethodBase method)
+        public override void RuntimeInitialize(MethodBase method)
         {
-            if (_loggerType.BaseType != typeof(LoggerService))
+            if (_loggerType != null)
             {
-                throw new Exception("Wrong Logger Type");
+                if (_loggerType.BaseType != typeof(LoggerService))
+                {
+                    throw new Exception("Wrong Logger Type");
+                }
+                _loggerService = (LoggerService)Activator.CreateInstance(_loggerType);
             }
-            _loggerService = (LoggerService)Activator.CreateInstance(_loggerType);
             base.RuntimeInitialize(method);
         }
 
@@ -41,7 +46,8 @@ namespace DevFramework.Core.Aspects.Postsharp.LogAspects
             }
             try
             {
-                var logParameters = args.Method.GetParameters().Select((t, i) => new LogParameter
+                var logParameters = args.Method.GetParameters()
+                    .Select((t, i) => new LogParameter
                 {
                     Name = t.Name,
                     Type = t.ParameterType.Name,
@@ -49,7 +55,8 @@ namespace DevFramework.Core.Aspects.Postsharp.LogAspects
                 }).ToList();
                 var logDetail = new LogDetail
                 {
-                    FullName = args.Method.DeclaringType == null ? null : args.Method.DeclaringType.Name,
+                    FullName = args.Method.DeclaringType == null ? null :
+                        args.Method.DeclaringType.Name,
                     MethodName = args.Method.Name,
                     Parameters = logParameters
                 };

@@ -35,5 +35,26 @@ namespace DevFramework.Northwind.MvcWebUI.Controllers
             });
             return "Added!";
         }
+
+        public string AddUpdate()
+        {
+            _productService.TransactionalOperation(new Product
+            {
+                CategoryId = 1,
+                ProductName = "Bilgisayar",
+                QuantityPerUnit = "1000",
+                UnitPrice = 21,
+            }, new Product
+            {
+                CategoryId = 1,
+                ProductId = 2,
+                ProductName = "Bilgisayar2",
+                QuantityPerUnit = "1000",
+                UnitPrice = 2000,
+            });
+            return "Done!";
+        }
+
+
     }
 }
