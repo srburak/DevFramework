@@ -24,6 +24,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DevFramework.Northwind.WcfService", "DevFramework.Northwind.WcfService\", "{FFD2A59A-1376-4210-8735-799E54AE7B7E}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		ProjectReferences = "{A5AE5C73-576B-4FAF-B8F2-4216F3495840}|DevFramework.Northwind.Business.dll;{6BF0D637-44F4-43DF-8D14-B3E4CE068525}|DevFramework.Core.dll;{9FFA42E2-5970-4FD5-8538-784BDF7FDB01}|DevFramework.Northwind.DataAccsess.dll;{2E8576C0-2419-402D-8114-E8A3FF871F8F}|DevFramework.Northwind.Entities.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_50380"
 		Debug.AspNetCompiler.PhysicalPath = "DevFramework.Northwind.WcfService\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50380\"
@@ -42,6 +43,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DevFramework.Northwind.WcfS
 		SlnRelativePath = "DevFramework.Northwind.WcfService\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevFramework.Northwind.MvcAngularUI", "DevFramework.Northwind.MvcAngularUI\DevFramework.Northwind.MvcAngularUI.csproj", "{A0C3F45A-8975-40AD-8E06-5431944EDBC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +92,10 @@ Global
 		{FFD2A59A-1376-4210-8735-799E54AE7B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFD2A59A-1376-4210-8735-799E54AE7B7E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{FFD2A59A-1376-4210-8735-799E54AE7B7E}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{A0C3F45A-8975-40AD-8E06-5431944EDBC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0C3F45A-8975-40AD-8E06-5431944EDBC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0C3F45A-8975-40AD-8E06-5431944EDBC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0C3F45A-8975-40AD-8E06-5431944EDBC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

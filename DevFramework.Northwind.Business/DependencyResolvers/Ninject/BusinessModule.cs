@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using DevFramework.Northwind.Business.Concrete.Managers;
 using DevFramework.Northwind.DataAccsess.Abstract;
 using DevFramework.Northwind.DataAccsess.Concrete.EntityFramework;
+using DevFramework.Northwind.DataAccsess.Concrete.NHibernate;
 using DevFramework.Northwind.DataAccsess.Concrete.NHibernate.Helppers;
 
 namespace DevFramework.Northwind.Business.DependencyResolvers.Ninject
